@@ -28,10 +28,11 @@ function checkTimer() {
 
 function showQuestions() {
 // unhide questions element and list out the options
-while(question.index != (questions.length-1)){
+while(questions.index != (questions.length-1)){
   // unhide questions and loop through them on each submission
 }
   endScreen();
+  checkScores();
 }
 
 
@@ -39,6 +40,14 @@ function endScreen() {
   
 
 }
+
+
+function checkTimer() {
+  console.log(timerElement.toString);
+
+}
+
+
 // display question 1 and wait for user response
 
 // calc user score
