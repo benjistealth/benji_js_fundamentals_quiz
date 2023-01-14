@@ -4,27 +4,31 @@
 // Create an array
 
 var question1 = {
-        question: "What is the answer to q1 ?",
-        options: ["Option1", "Option2", "Option3", "Option4"],
-        answer: "Option1",
-    };
+    title: "Title_1",
+    question: "What is the answer to q1 ?",
+    options: ["Option1", "Option2", "Option3", "Option4"],
+    answer: "Option1",
+};
 
-    var question2 = {
-        question: "What is the answer to q1 ?",
-        options: ["Option1", "Option2", "Option3", "Option4"],
-        answer: "Option2",
-    };
+var question2 = {
+    title: "Title_2",
+    question: "What is the answer to q1 ?",
+    options: ["Option1", "Option2", "Option3", "Option4"],
+    answer: "Option2",
+};
 
-    var question3 = {
-        question: "What is the answer to q1 ?",
-        options: ["Option1", "Option2", "Option3", "Option4"],
-        answer: "Option3",
-    };
+var question3 = {
+    title: "Title_3",
+    question: "What is the answer to q1 ?",
+    options: ["Option1", "Option2", "Option3", "Option4"],
+    answer: "Option3",
+};
 
-    var question4 = {
-        question: "What is the answer to q1 ?",
-        options: ["Option1", "Option2", "Option3", "Option4"],
-        answer: "Option4",
-    };
+var question4 = {
+    title: "Title_4",
+    question: "What is the answer to q1 ?",
+    options: ["Option1", "Option2", "Option3", "Option4"],
+    answer: "Option4",
+};
 
-    var questions = [question1, question2, question3, question4];
+var questions = [question1, question2, question3, question4];
