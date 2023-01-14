@@ -1,21 +1,33 @@
 // create variables to reference html
-var wordBlank = document.querySelector(".");
-var win = document.querySelector(".");
-var lose = document.querySelector(".");
-var timerElement = document.querySelector(".");
-var startButton = document.querySelector(".");
+var startButton = document.querySelector("#start");
+var hideQuestions = document.querySelector(".hide");
+var choices = document.querySelector(".choices");
+var timerElement = document.querySelector(".timer");
 
 // listener to trigger the game when the "Start Quiz" button is hit
 // start the timer when the start button is pressed
-document.addEventListener("click", function(event) {
-    // If the count is zero, exit function
-    if (timerCount === 0) {
-      return;
-    }
-    // Convert all key presses to lower case
-    var key = event.key.toLowerCase();
-  });
-  
+startButton.addEventListener("click", function (event) {
+  event.preventDefault();
+   startGame();
+  // If the count is zero, exit function
+  if (timerElement.textContent == 0) {
+    console.log("end game");
+  }
+});
+// Create startGame() function to kick off the game
+function startGame() {
+  while((checkTimer() != 0)){
+  showQuestions();
+  }
+  endScreen();
+}
+
+function showQuestions() {
+// unhide questions element and list out the options
+
+
+}
+
 // display question 1 and wait for user response
 
 // calc user score
