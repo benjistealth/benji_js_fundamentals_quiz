@@ -8,7 +8,7 @@ var timerElement = document.querySelector(".timer");
 // start the timer when the start button is pressed
 startButton.addEventListener("click", function (event) {
   event.preventDefault();
-   startGame();
+  startGame();
   // If the count is zero, exit function
   if (timerElement.textContent == 0) {
     console.log("end game");
@@ -16,36 +16,22 @@ startButton.addEventListener("click", function (event) {
 });
 // Create startGame() function to kick off the game
 function startGame() {
-  while(checkTimer() != 0){
-  showQuestions();
+  while (checkTimer() != 0) {
+    showQuestions();
   }
 }
 
 function checkTimer() {
+  console.log(timerElement.toString());
 
-
-}
-
-function showQuestions() {
-// unhide questions element and list out the options
-while(questions.index != (questions.length-1)){
-  // unhide questions and loop through them on each submission
-}
-  endScreen();
-  checkScores();
 }
 
 
 function endScreen() {
-  
+
 
 }
 
-
-function checkTimer() {
-  console.log(timerElement.toString);
-
-}
 
 
 // display question 1 and wait for user response

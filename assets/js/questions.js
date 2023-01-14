@@ -32,3 +32,17 @@ var question4 = {
 };
 
 var questions = [question1, question2, question3, question4];
+
+function showQuestions() {
+    // hide start page element
+    // unhide questions element and list out the options
+    while (questions.index != (questions.length - 1)) {
+        // loop through them on each submission
+        for (let i = 0; i < questions.length; i++) {
+            console.log(questions.i.title);
+       }
+    }
+    endScreen();
+    checkScores();
+}
+
