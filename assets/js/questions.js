@@ -3,12 +3,28 @@
 // Store each question as an object with all the info for each question
 // Create an array
 
-
-
-var questions = [];
-    question1 = {
+var question1 = {
         question: "What is the answer to q1 ?",
         options: ["Option1", "Option2", "Option3", "Option4"],
-        answer: "Option 1 maybe",
-    },
+        answer: "Option1",
+    };
 
+    var question2 = {
+        question: "What is the answer to q1 ?",
+        options: ["Option1", "Option2", "Option3", "Option4"],
+        answer: "Option2",
+    };
+
+    var question3 = {
+        question: "What is the answer to q1 ?",
+        options: ["Option1", "Option2", "Option3", "Option4"],
+        answer: "Option3",
+    };
+
+    var question4 = {
+        question: "What is the answer to q1 ?",
+        options: ["Option1", "Option2", "Option3", "Option4"],
+        answer: "Option4",
+    };
+
+    var questions = [question1, question2, question3, question4];
