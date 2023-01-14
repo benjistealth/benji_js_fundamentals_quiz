@@ -16,18 +16,29 @@ startButton.addEventListener("click", function (event) {
 });
 // Create startGame() function to kick off the game
 function startGame() {
-  while((checkTimer() != 0)){
+  while(checkTimer() != 0){
   showQuestions();
   }
-  endScreen();
+}
+
+function checkTimer() {
+
+
 }
 
 function showQuestions() {
 // unhide questions element and list out the options
-
-
+while(question.index != (questions.length-1)){
+  // unhide questions and loop through them on each submission
+}
+  endScreen();
 }
 
+
+function endScreen() {
+  
+
+}
 // display question 1 and wait for user response
 
 // calc user score
