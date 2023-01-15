@@ -53,7 +53,7 @@ function showHideQuestions(hide) {
     // checkScores();
     return;
 }
-
+// listener for answer button click event
 options.addEventListener("click", function (event) {
     // var thing = event.target.innerText; 
     // thing = thing.splice(0,2);
@@ -80,13 +80,15 @@ function makeButtons(list) {
 function questionWrong() {
     // display feedback to user and load next question
     // also reduce timer by 10 seconds
-    feedback.textContent = "Wrong !!";
+    feedback.textContent = "Wrong!";
     timerCount -= 10;
+    return;
 }
 
 function questionOK() {
     // display feedback to user and load next question
-    feedback.textContent = "Correct !!";
+    feedback.textContent = "Correct!";
+    return;
 }
 
 function endScreen() {
