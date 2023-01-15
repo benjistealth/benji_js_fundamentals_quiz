@@ -43,6 +43,7 @@ function showHideQuestions(hide) {
         // optionButton.setAttribute("id", "Option" + "1");
         // optionButton.textContent = options.appendChild(questionsArr[0].options[0]);
         // options.appendChild(optionButton);
+        makeButtons(questionsArr[0].options);
     }
     else {
         // console.log("hide Qs");
@@ -61,21 +62,22 @@ function showHideQuestions(hide) {
     return;
 }
 
-function makeButtons(listItem) { 
-    var grabList = document.getElementById(".options");
+function makeButtons(list) { 
+    var getListEntry = document.getElementById(".options");
   
-    var text = "" + "option" + "optionNumber";
+    
     var questionItem = document.createElement('li');
+    var text = "" + "option" + questionItem.id;
     questionItem.id = list.length - 1;
     questionItem.className = "option"; 
     questionItem.appendChild(document.createTextNode(text));
   
-    /*Add a button to each LI */
+    // Add a button to each LI 
     var button = document.createElement('button');
-    button.innerText = 'Click me!';
+    button.innerText = 'Option 1';
     questionItem.appendChild(button);
   
-    grabList.appendChild(entry);
+    getListEntry.appendChild(questionItem);
   }
 
 function questionWrong() {
