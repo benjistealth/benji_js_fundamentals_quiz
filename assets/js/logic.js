@@ -1,7 +1,9 @@
 // create variables to reference html
+var startScreen = document.querySelector("#start-screen");
 var startButton = document.querySelector("#start");
 var questions = document.querySelector("#questions");
-var choices = document.querySelector(".choices");
+var questionTitle = document.querySelector("#question-title");
+var options = document.querySelector(".options");
 var timerElement = document.querySelector(".timer");
 var feedback = document.querySelector(".feedback");
 // global variables
@@ -11,20 +13,23 @@ var timerCount;
 // listener to trigger the game when the "Start Quiz" button is hit
 // start the timer when the start button is pressed
 startButton.addEventListener("click", function (event) {
+  startScreen.setAttribute("class", "hide");
   event.preventDefault();
   startGame();
-  // showHideQuestions(true);
+  showHideQuestions(true);
 });
+
 // Create startGame() function to kick off the game
 function startGame() {
   // set a new counter value 
-  timerCount = 75;
+  timerCount = 10;
   //update timer on screen
   timerElement.textContent = timerCount;
   startCounter();
-  while (timerCount != 0) {
-    showHideQuestions(true);
-  }
+  // while (timerCount != 0) {
+  //   showHideQuestions(true);
+  //   console.log("show hide");
+  //}
 }
 
 function checkTimer() {
@@ -47,19 +52,18 @@ function startCounter() {
     timerCount--; // reduce timer & upate screen
     timerElement.textContent = timerCount;
     if (timerCount >= 0) {
-      // Clears interval and stops timer
-      // clearInterval(timer);
-      showHideQuestions(show);
+      // showHideQuestions(true);
     }
     // Check if timer is expired
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
       // Clears interval
       clearInterval(timer);
-      showHideQuestions(hide);
+      timerElement.textContent = timerCount;
+      // showHideQuestions(false);
       // endScreen();
     } //wait 1s
   }, 1000);
-
+return timerCount;
 }
 
 // display question 1 and wait for user response

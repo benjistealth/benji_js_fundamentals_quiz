@@ -2,6 +2,7 @@ body {
   background-color: darkslategrey;
   font-family: Arial;
   font-size: 120%;
+  /* font-style: black; */
 }
 
 a {
@@ -31,7 +32,7 @@ button:hover {
   background-color: #8570a5;
 }
 
-.choices button {
+.options button {
   display: block;
 }
 
