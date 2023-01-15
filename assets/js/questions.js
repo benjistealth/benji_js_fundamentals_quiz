@@ -34,13 +34,15 @@ function showHideQuestions(hide) {
     if (hide) {
         //hide start screen first, then show questions
         startScreen.setAttribute("class", "hide");
-        questions.setAttribute("class", "");
-        // questionTitle.textContent = storedQuestions[index].questionText;
+        questions.setAttribute("class", "none");
+        // show question 
         questionTitle.textContent = questionsArr[0].title;
-        var optionButton = document.createElement("button");
-        optionsButton.setAttribute("id", "button" +i);
-        optionButton.textContent = options.appendChild(questionsArr[0].options[0]);
-
+        //show option/s
+        // var listButton1 = options.appendChild("ol");
+        // listButton = document.createElement("BUTTON");
+        // optionButton.setAttribute("id", "Option" + "1");
+        // optionButton.textContent = options.appendChild(questionsArr[0].options[0]);
+        // options.appendChild(optionButton);
     }
     else {
         // console.log("hide Qs");
@@ -58,6 +60,23 @@ function showHideQuestions(hide) {
     // checkScores();
     return;
 }
+
+function makeButtons(listItem) { 
+    var grabList = document.getElementById(".options");
+  
+    var text = "" + "option" + "optionNumber";
+    var questionItem = document.createElement('li');
+    questionItem.id = list.length - 1;
+    questionItem.className = "option"; 
+    questionItem.appendChild(document.createTextNode(text));
+  
+    /*Add a button to each LI */
+    var button = document.createElement('button');
+    button.innerText = 'Click me!';
+    questionItem.appendChild(button);
+  
+    grabList.appendChild(entry);
+  }
 
 function questionWrong() {
     // display feedback to user and load next question
