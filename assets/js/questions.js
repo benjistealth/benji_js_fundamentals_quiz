@@ -11,21 +11,23 @@ var question1 = {
 
 var question2 = {
     title: "Q.2_What is the answer to q2 ?",
-    options: ["Option1", "Option2", "Option3", "Option4"],
+    options: ["Option1", "Option2", "Option3", "Optiontwo4"],
     answer: "Option2",
 };
 
 var question3 = {
     title: "Q.3_What is the answer to q3 ?",
-    options: ["Option1", "Option2", "Option3", "Option4"],
+    options: ["Option1", "Option2", "Option3", "Optionthree4"],
     answer: "Option3",
 };
 
 var question4 = {
     title: "4_What is the answer to q4 ?",
-    options: ["Option1", "Option2", "Option3", "Option4"],
+    options: ["Option1", "Option2", "Option3", "Option4four"],
     answer: "Option4",
 };
+
+var q = 0;
 
 var questionsArr = [question1, question2, question3, question4];
 
@@ -34,41 +36,42 @@ function showHideQuestions(hide) {
     if (hide) {
         //hide start screen first, then show questions
         startScreen.setAttribute("class", "hide");
-        questions.setAttribute("class", "none");
+        questions.setAttribute("class", "choices");
         // show question 
-        questionTitle.textContent = questionsArr[0].title;
-        //show option/s
-        // var listButton1 = options.appendChild("ol");
-        // listButton = document.createElement("BUTTON");
-        // optionButton.setAttribute("id", "Option" + "1");
-        // optionButton.textContent = options.appendChild(questionsArr[0].options[0]);
-        // options.appendChild(optionButton);
-        makeButtons(questionsArr[0].options);
+        // for (let i = 0; i < questionsArr.length; i++) {
+
+        //}
+        //prints 1 question and 4 options as buttons          
+        questionTitle.textContent = questionsArr[q].title;
+        makeButtons(questionsArr[q].options);
     }
     else {
-        // console.log("hide Qs");
-        // questions.setAttribute("class", "show");
+
         return;
     }
-
-    // while (questions.index != (questions.length - 1)) {
-    //     // loop through them on each submission
-    //     for (let i = 0; i < questions.length; i++) {
-
-    //     }
-    // }
     // endScreen();
     // checkScores();
     return;
 }
 
-function makeButtons(list) {
+options.addEventListener("click", function (event) {
+    // var thing = event.target.innerText; 
+    // thing = thing.splice(0,2);
+    console.log(event.target.innerText);
+    if (event.target.innerText === questionsArr[q].answer) {
+        questionOK();
+        q++;
+    }
+    else questionWrong();
 
+});
+
+// pass array of question options to display as buttons
+function makeButtons(list) {
     var questionItem = document.createElement("ol");
-    // questionItem.className = "choices";
     for (let i = 0; i < list.length; i++) {
         var button = document.createElement('button');
-        button.innerText = (i+1) + ". " + list[i];
+        button.innerText = list[i]; // (i + 1) +  + ". "
         questionItem.appendChild(button);
         options.appendChild(questionItem);
     }
@@ -77,7 +80,7 @@ function makeButtons(list) {
 function questionWrong() {
     // display feedback to user and load next question
     // also reduce timer by 10 seconds
-    feedback.textContent = "Correct !!";
+    feedback.textContent = "Wrong !!";
     timerCount -= 10;
 }
 
