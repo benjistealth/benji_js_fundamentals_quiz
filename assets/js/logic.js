@@ -3,6 +3,10 @@ var startButton = document.querySelector("#start");
 var hideQuestions = document.querySelector(".hide");
 var choices = document.querySelector(".choices");
 var timerElement = document.querySelector(".timer");
+var feedback = document.querySelector(".feedback");
+// global variables
+var timer;
+var timerCount;
 
 // listener to trigger the game when the "Start Quiz" button is hit
 // start the timer when the start button is pressed
@@ -12,27 +16,50 @@ startButton.addEventListener("click", function (event) {
   // If the count is zero, exit function
   if (timerElement.textContent == 0) {
     console.log("end game");
+    evalScore();
+    endScreen();
   }
+  else showHideQuestions();
 });
 // Create startGame() function to kick off the game
 function startGame() {
+  timerCount = 75;
+  timerElement.textContent = timerCount;
+  startCounter();
   while (checkTimer() != 0) {
-    showQuestions();
+    showHideQuestions();
   }
 }
 
 function checkTimer() {
-  console.log(timerElement.toString());
+  console.log(timerElement.textContent);
+  timerElement.textContent = timerCount;
 
 }
-
 
 function endScreen() {
 
 
 }
 
+function startCounter() {
+  // Sets timer
+  timer = setInterval(function() {
+    timerCount--;
+    timerElement.textContent = timerCount;
+    if (timerCount >= 0) {
+        // Clears interval and stops timer
+        clearInterval(timer);
+    }
+    // Tests if time has run out
+    if (timerCount === 0) {
+      // Clears interval
+      clearInterval(timer);
+      questionWrong();
+    }
+  }, 1000);
 
+}
 
 // display question 1 and wait for user response
 

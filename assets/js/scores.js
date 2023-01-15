@@ -20,3 +20,8 @@ function displayScores() {
 
 }
 
+function evalScore() {
+getScores();
+displayScores();
+
+}

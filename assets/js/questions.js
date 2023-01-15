@@ -32,10 +32,11 @@ var question4 = {
 };
 
 var questions = [question1, question2, question3, question4];
+var hide = true;
 
-function showQuestions() {
-    // hide start page element
-    // unhide questions element and list out the options
+function showHideQuestions(hide) {
+    // hide start page element - show questions
+    
     while (questions.index != (questions.length - 1)) {
         // loop through them on each submission
         for (let i = 0; i < questions.length; i++) {
@@ -46,3 +47,14 @@ function showQuestions() {
     checkScores();
 }
 
+function questionWrong() {
+// display feedback to user and load next question
+// also reduce timer by 10 seconds
+
+}
+
+function questionOK() {
+    // display feedback to user and load next question
+
+
+}
