@@ -13,18 +13,14 @@ var timerCount;
 startButton.addEventListener("click", function (event) {
   event.preventDefault();
   startGame();
-  // If the count is zero, exit function
-  if (timerElement.textContent == 0) {
-    console.log("end game");
-    evalScore();
-    endScreen();
-  }
-  else showHideQuestions();
+  // showHideQuestions(true);
 });
 // Create startGame() function to kick off the game
 function startGame() {
+  // set a new counter value 
   timerCount = 75;
-  timerElement.textContent = timerCount; // working
+  //update timer on screen
+  timerElement.textContent = timerCount;
   startCounter();
   while (timerCount != 0) {
     showHideQuestions(true);
@@ -38,25 +34,30 @@ function checkTimer() {
 }
 
 function endScreen() {
-
+  // allow high score entry
+  //save high score with initials
+  console.log("end screen");
+  return;
 
 }
 
 function startCounter() {
   // Sets timer
-  timer = setInterval(function() {
-    timerCount--; //working
-    timerElement.textContent = timerCount; //working
+  timer = setInterval(function () {
+    timerCount--; // reduce timer & upate screen
+    timerElement.textContent = timerCount;
     if (timerCount >= 0) {
-        // Clears interval and stops timer
-        clearInterval(timer);
+      // Clears interval and stops timer
+      // clearInterval(timer);
+      showHideQuestions(show);
     }
-    // Tests if time has run out
+    // Check if timer is expired
     if (timerCount === 0) {
       // Clears interval
       clearInterval(timer);
-      // questionWrong(); not sure about that
-    }
+      showHideQuestions(hide);
+      // endScreen();
+    } //wait 1s
   }, 1000);
 
 }

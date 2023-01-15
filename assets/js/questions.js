@@ -36,23 +36,23 @@ var hide = true;
 
 function showHideQuestions(hide) {
     // hide start page element - show questions
-    
-    while (questions.index != (questions.length - 1)) {
-        // loop through them on each submission
-        for (let i = 0; i < questions.length; i++) {
-            
-       }
-    }
+    if(hide){console.log("show Qs");}
+    else {console.log("hide Qs");}
+    // while (questions.index != (questions.length - 1)) {
+    //     // loop through them on each submission
+    //     for (let i = 0; i < questions.length; i++) {
+
+    //     }
+    // }
     endScreen();
     checkScores();
 }
 
 function questionWrong() {
-// display feedback to user and load next question
-// also reduce timer by 10 seconds
-feedback.textContent = "Correct !!";
-timerCount -+ 10;
-
+    // display feedback to user and load next question
+    // also reduce timer by 10 seconds
+    feedback.textContent = "Correct !!";
+    timerCount - + 10;
 }
 
 function questionOK() {
@@ -62,8 +62,9 @@ function questionOK() {
 }
 
 function endScreen() {
-// hide questions and start page - show score and say GAME OVER or summat
-showHideQuestions(false); // hide questions
-// show score and Game over 
-
+    // hide questions and start page - show score and say GAME OVER or summat
+    // then load high score entry
+    showHideQuestions(false); // hide questions
+    // show score and Game over
+    displayScores();
 }
