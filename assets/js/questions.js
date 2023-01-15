@@ -4,25 +4,25 @@
 // Create an array
 ;
 var question1 = {
-    title: "test_What is the answer to q1 ?",
+    title: "Q.1_What is the answer to q1 ?",
     options: ["Option1", "Option2", "Option3", "Option4"],
     answer: "Option1",
 };
 
 var question2 = {
-    title: "What is the answer to q1 ?",
+    title: "Q.2_What is the answer to q2 ?",
     options: ["Option1", "Option2", "Option3", "Option4"],
     answer: "Option2",
 };
 
 var question3 = {
-    title: "What is the answer to q1 ?",
+    title: "Q.3_What is the answer to q3 ?",
     options: ["Option1", "Option2", "Option3", "Option4"],
     answer: "Option3",
 };
 
 var question4 = {
-    title: "What is the answer to q1 ?",
+    title: "4_What is the answer to q4 ?",
     options: ["Option1", "Option2", "Option3", "Option4"],
     answer: "Option4",
 };
@@ -62,21 +62,17 @@ function showHideQuestions(hide) {
     return;
 }
 
-function makeButtons(list) { 
-       
-    var questionItem = document.createElement('li');
-    var text = "" + "option" + questionItem.id.toString();
-    questionItem.id = list.length - 1;
-    questionItem.className = "option"; 
-    questionItem.appendChild(document.createTextNode(list[0]));
-  
-    // Add a button to each LI 
-    var button = document.createElement('button');
-    button.innerText = 'Option 1';
-    questionItem.appendChild(button);
-  
-    options.appendChild(questionItem);
-  }
+function makeButtons(list) {
+
+    var questionItem = document.createElement("ol");
+    // questionItem.className = "choices";
+    for (let i = 0; i < list.length; i++) {
+        var button = document.createElement('button');
+        button.innerText = (i+1) + ". " + list[i];
+        questionItem.appendChild(button);
+        options.appendChild(questionItem);
+    }
+}
 
 function questionWrong() {
     // display feedback to user and load next question
