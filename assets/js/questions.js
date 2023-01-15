@@ -40,7 +40,7 @@ function showHideQuestions(hide) {
     while (questions.index != (questions.length - 1)) {
         // loop through them on each submission
         for (let i = 0; i < questions.length; i++) {
-            console.log(questions.i.title);
+            
        }
     }
     endScreen();
@@ -50,11 +50,20 @@ function showHideQuestions(hide) {
 function questionWrong() {
 // display feedback to user and load next question
 // also reduce timer by 10 seconds
+feedback.textContent = "Correct !!";
+timerCount -+ 10;
 
 }
 
 function questionOK() {
     // display feedback to user and load next question
+    feedback.textContent = "Correct !!";
 
+}
+
+function endScreen() {
+// hide questions and start page - show score and say GAME OVER or summat
+showHideQuestions(false); // hide questions
+// show score and Game over 
 
 }

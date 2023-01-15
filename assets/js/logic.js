@@ -1,6 +1,6 @@
 // create variables to reference html
 var startButton = document.querySelector("#start");
-var hideQuestions = document.querySelector(".hide");
+var questions = document.querySelector("#questions");
 var choices = document.querySelector(".choices");
 var timerElement = document.querySelector(".timer");
 var feedback = document.querySelector(".feedback");
@@ -24,10 +24,10 @@ startButton.addEventListener("click", function (event) {
 // Create startGame() function to kick off the game
 function startGame() {
   timerCount = 75;
-  timerElement.textContent = timerCount;
+  timerElement.textContent = timerCount; // working
   startCounter();
-  while (checkTimer() != 0) {
-    showHideQuestions();
+  while (timerCount != 0) {
+    showHideQuestions(true);
   }
 }
 
@@ -45,8 +45,8 @@ function endScreen() {
 function startCounter() {
   // Sets timer
   timer = setInterval(function() {
-    timerCount--;
-    timerElement.textContent = timerCount;
+    timerCount--; //working
+    timerElement.textContent = timerCount; //working
     if (timerCount >= 0) {
         // Clears interval and stops timer
         clearInterval(timer);
@@ -55,7 +55,7 @@ function startCounter() {
     if (timerCount === 0) {
       // Clears interval
       clearInterval(timer);
-      questionWrong();
+      // questionWrong(); not sure about that
     }
   }, 1000);
 
