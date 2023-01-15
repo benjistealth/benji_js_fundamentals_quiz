@@ -63,28 +63,26 @@ function showHideQuestions(hide) {
 }
 
 function makeButtons(list) { 
-    var getListEntry = document.getElementById(".options");
-  
-    
+       
     var questionItem = document.createElement('li');
-    var text = "" + "option" + questionItem.id;
+    var text = "" + "option" + questionItem.id.toString();
     questionItem.id = list.length - 1;
     questionItem.className = "option"; 
-    questionItem.appendChild(document.createTextNode(text));
+    questionItem.appendChild(document.createTextNode(list[0]));
   
     // Add a button to each LI 
     var button = document.createElement('button');
     button.innerText = 'Option 1';
     questionItem.appendChild(button);
   
-    getListEntry.appendChild(questionItem);
+    options.appendChild(questionItem);
   }
 
 function questionWrong() {
     // display feedback to user and load next question
     // also reduce timer by 10 seconds
     feedback.textContent = "Correct !!";
-    timerCount - + 10;
+    timerCount -= 10;
 }
 
 function questionOK() {

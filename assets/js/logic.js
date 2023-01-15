@@ -3,7 +3,7 @@ var startScreen = document.querySelector("#start-screen");
 var startButton = document.querySelector("#start");
 var questions = document.querySelector("#questions");
 var questionTitle = document.querySelector("#question-title");
-var options = document.querySelector(".options");
+var options = document.querySelector(".choices");
 var timerElement = document.querySelector(".timer");
 var feedback = document.querySelector(".feedback");
 // global variables
