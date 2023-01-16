@@ -7,6 +7,7 @@ function saveScores() {
     // save scores to local storage
     // get name from user input
     finalScoreEl.textContent = timerCount;
+    // event listener for submit button so save the data
     submitButton.addEventListener("click", function (event) {
         var saveInitials = intialsEl.value;
         var saveScore = timerCount;
@@ -15,20 +16,25 @@ function saveScores() {
             score: saveScore,
         }
         localStorage.setItem("highScore", JSON.stringify(finalScore));
-        
+        displayScores();
     });
 }
+
 
 function getScores() {
     // recall scores from local storage
     recalledScores = localStorage.getItem(JSON.parse(highScore));
     return;
-    // score = localStorage.getItem("name", score);
 }
 
 function displayScores() {
+    //hide the endscreen
+    // endScreenEl.setAttribute("class", "hide"); //may not need this as going to new html file this time
     // display the leaderboard on the highscores page
-    var highScoreDisplay =  ("ol");
+    function highScoresPage() {
+        location.replace("./../html/highscsores.html");
+      }
+    var highScoreDisplay = ("ol");
     // scoresEl.appendChild(highScoreDisplay);
     return;
 }
