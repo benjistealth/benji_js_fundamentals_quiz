@@ -4,30 +4,32 @@
 // Create an array
 ;
 var question1 = {
-    title: "Q.1_What is the answer to q1 ?",
-    options: ["Option1", "Option2", "Option3", "Option4"],
-    answer: "Option1",
+    title: "Commonly used data types DO NOT include: ",
+    options: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"],
+    answer: "3. Alerts",
 };
 
 var question2 = {
-    title: "Q.2_What is the answer to q2 ?",
-    options: ["Option1", "Option2", "Option3", "Optiontwo4"],
-    answer: "Option2",
+    title: "The condition in an if/else statement is enclosed within: ",
+    options: ["1. Quotes", "2. Curley Brackets", "3. Parenthesis", "4. Square Brackets"],
+    answer: "2. Curley Brackets",
 };
 
 var question3 = {
-    title: "Q.3_What is the answer to q3 ?",
-    options: ["Option1", "Option2", "Option3", "Optionthree4"],
-    answer: "Option3",
+    title: "Arrays in Javascript can be used to store: ",
+    options: ["1. Numbers & Strings", "2. Other Strings", "3. Booleans", "4. All of the above"],
+    answer: "4. All of the above",
 };
 
 var question4 = {
-    title: "4_What is the answer to q4 ?",
-    options: ["Option1", "Option2", "Option3", "Option4four"],
-    answer: "Option4",
+    title: "String Values must be enclosed within _______ when being assigned to variables: ",
+    options: ["1. Commas", "2. Curley Brackets", "3. Quotation Marks", "4. Parenthesis"],
+    answer: "3. Quotation Marks",
 };
 
 var q = 0;
+
+var questionItem = document.createElement("ol");
 
 var questionsArr = [question1, question2, question3, question4];
 
@@ -37,52 +39,57 @@ function showHideQuestions(hide) {
         //hide start screen first, then show questions
         startScreen.setAttribute("class", "hide");
         questions.setAttribute("class", "choices");
-        // show question 
-        // for (let i = 0; i < questionsArr.length; i++) {
-
-        //}
-        //prints 1 question and 4 options as buttons          
+        //prints 1st question        
         questionTitle.textContent = questionsArr[q].title;
+        // prints the 4 options as buttons for q1
         makeButtons(questionsArr[q].options);
     }
     else {
-
         return;
     }
-    // endScreen();
-    // checkScores();
-    return;
 }
 // listener for answer button click event
 options.addEventListener("click", function (event) {
-    // var thing = event.target.innerText; 
-    // thing = thing.splice(0,2);
     console.log(event.target.innerText);
     console.log(questionsArr[q].answer);
     if (event.target.innerText === questionsArr[q].answer) {
         questionOK();
-        q++;
-        showHideQuestions(true);
+        nextQuestion();
     }
-    else if(event.target.innerText != questionsArr[q].answer)
-         questionWrong();
-         showHideQuestions(true);
-
+    else if (event.target.innerText != questionsArr[q].answer) {
+        questionWrong();
+        nextQuestion();
+    }
 });
 
 // pass array from showHideQuestions to display as buttons
 function makeButtons(arr) {
-    var questionItem = document.createElement("ol");
-    for (let i = 0; i < list.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
+        // questionItem.id = i;
+        questionItem.className = "questionItem";
         var button = document.createElement('button');
+        button.id = "button_" + i;
         button.innerText = arr[i]; // (i + 1) +  + ". "
         questionItem.appendChild(button);
         options.appendChild(questionItem);
     }
 }
 
-function replaceButtons() {
-
+// amends the button text and question text after a selection is made
+function nextQuestion() {
+    if(q<3){
+    q++;
+    var buttonQ0 = document.querySelector("#button_0");
+    var buttonQ1 = document.querySelector("#button_1");
+    var buttonQ2 = document.querySelector("#button_2");
+    var buttonQ3 = document.querySelector("#button_3");
+    buttonQ0.innerText = questionsArr[q].options[0];
+    buttonQ1.innerText = questionsArr[q].options[1];
+    buttonQ2.innerText = questionsArr[q].options[2];
+    buttonQ3.innerText = questionsArr[q].options[3];
+    questionTitle.textContent = questionsArr[q].title;
+    console.log("next question please !")
+    }
 
 }
 
