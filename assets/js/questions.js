@@ -51,8 +51,6 @@ function showHideQuestions(hide) {
 }
 // listener for answer button click event
 options.addEventListener("click", function (event) {
-    console.log(event.target.innerText);
-    console.log(questionsArr[q].answer);
     if (event.target.innerText === questionsArr[q].answer) {
         questionOK();
         nextQuestion();
@@ -90,10 +88,9 @@ function nextQuestion() {
         buttonQ2.innerText = questionsArr[q].options[2];
         buttonQ3.innerText = questionsArr[q].options[3];
         questionTitle.textContent = questionsArr[q].title;
-        console.log("next question please !")
     }
     else {
-        saveScore();
+        saveScores();
         endScreen();
     }
 }
@@ -116,9 +113,9 @@ function endScreen() {
     // hide questions and start page - show score and say GAME OVER or summat
     //showHideQuestions(false); // hide questions - may not be required if changing to highscores.html
     // show the endScreen
-    endScreenEl.setAttribute("class", "show");
     questions.setAttribute("class", "hide");
-    finalScoreEl.textContent = timerCount;
+    endScreenEl.setAttribute("class", "show");    
+    // finalScoreEl.textContent = timerCount;
     clearInterval(timer);
     // then load high score entry
     // show score and Game over

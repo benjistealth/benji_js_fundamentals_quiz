@@ -36,12 +36,6 @@ function startGame() {
   //}
 }
 
-function checkTimer() {
-  console.log(timerElement.textContent);
-  timerElement.textContent = timerCount;
-
-}
-
 function startCounter() {
   // Sets timer
   timer = setInterval(function () {

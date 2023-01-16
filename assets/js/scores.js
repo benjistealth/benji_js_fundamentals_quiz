@@ -1,21 +1,12 @@
-var score = 0;
 var scoresEl = document.querySelector("highscores");
-var name = "name";
+var recalledScores;
 
-function checkScores() {
-    // check the scores
-    getScores();
-    console.log("checking scores");
-    displayScores();
-
-}
-
-function saveScore() {
+function saveScores() {
     // assuming the score is the time left, bigger score  === better
     // get the time remaining to save as score - timerCount
     // save scores to local storage
     // get name from user input
-    endScreenEl = timerCount;
+    finalScoreEl.textContent = timerCount;
     submitButton.addEventListener("click", function (event) {
         var saveInitials = intialsEl.value;
         var saveScore = timerCount;
@@ -24,24 +15,20 @@ function saveScore() {
             score: saveScore,
         }
         localStorage.setItem("highScore", JSON.stringify(finalScore));
+        
     });
 }
 
 function getScores() {
     // recall scores from local storage
-    JSON.parse(highScore);
+    recalledScores = localStorage.getItem(JSON.parse(highScore));
     return;
     // score = localStorage.getItem("name", score);
 }
 
-function evalScore() {
-    getScores();
-    displayScores();
-    return;
-}
-
 function displayScores() {
     // display the leaderboard on the highscores page
-    // scoresEl.appendChild(li, score);
+    var highScoreDisplay =  ("ol");
+    // scoresEl.appendChild(highScoreDisplay);
     return;
 }
