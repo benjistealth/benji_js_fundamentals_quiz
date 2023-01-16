@@ -11,13 +11,25 @@ function checkScores() {
 }
 
 function saveScore() {
+    // assuming the score is the time left, bigger score  === better
+    // get the time remaining to save as score - timerCount
     // save scores to local storage
-    // localStorage.setItem("name", score);
     // get name from user input
+    endScreenEl = timerCount;
+    submitButton.addEventListener("click", function (event) {
+        var saveInitials = intialsEl.value;
+        var saveScore = timerCount;
+        var finalScore = {
+            initials: saveInitials,
+            score: saveScore,
+        }
+        localStorage.setItem("highScore", JSON.stringify(finalScore));
+    });
 }
 
 function getScores() {
     // recall scores from local storage
+    JSON.parse(highScore);
     return;
     // score = localStorage.getItem("name", score);
 }
@@ -30,7 +42,6 @@ function evalScore() {
 
 function displayScores() {
     // display the leaderboard on the highscores page
-    scoresEl.appendChild(li, score);
+    // scoresEl.appendChild(li, score);
     return;
 }
-

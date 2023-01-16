@@ -29,7 +29,7 @@ var question4 = {
 
 var q = 0;
 
-var questionItem = document.createElement("ol");
+
 
 var questionsArr = [question1, question2, question3, question4];
 
@@ -45,6 +45,7 @@ function showHideQuestions(hide) {
         makeButtons(questionsArr[q].options);
     }
     else {
+        questions.setAttribute("class", "hide");
         return;
     }
 }
@@ -64,12 +65,13 @@ options.addEventListener("click", function (event) {
 
 // pass array from showHideQuestions to display as buttons
 function makeButtons(arr) {
+    var questionItem = document.createElement("ol");
     for (let i = 0; i < arr.length; i++) {
         // questionItem.id = i;
         questionItem.className = "questionItem";
         var button = document.createElement('button');
         button.id = "button_" + i;
-        button.innerText = arr[i]; // (i + 1) +  + ". "
+        button.innerText = arr[i];
         questionItem.appendChild(button);
         options.appendChild(questionItem);
     }
@@ -77,20 +79,23 @@ function makeButtons(arr) {
 
 // amends the button text and question text after a selection is made
 function nextQuestion() {
-    if(q<3){
-    q++;
-    var buttonQ0 = document.querySelector("#button_0");
-    var buttonQ1 = document.querySelector("#button_1");
-    var buttonQ2 = document.querySelector("#button_2");
-    var buttonQ3 = document.querySelector("#button_3");
-    buttonQ0.innerText = questionsArr[q].options[0];
-    buttonQ1.innerText = questionsArr[q].options[1];
-    buttonQ2.innerText = questionsArr[q].options[2];
-    buttonQ3.innerText = questionsArr[q].options[3];
-    questionTitle.textContent = questionsArr[q].title;
-    console.log("next question please !")
+    if (q < 3) {
+        q++;
+        var buttonQ0 = document.querySelector("#button_0");
+        var buttonQ1 = document.querySelector("#button_1");
+        var buttonQ2 = document.querySelector("#button_2");
+        var buttonQ3 = document.querySelector("#button_3");
+        buttonQ0.innerText = questionsArr[q].options[0];
+        buttonQ1.innerText = questionsArr[q].options[1];
+        buttonQ2.innerText = questionsArr[q].options[2];
+        buttonQ3.innerText = questionsArr[q].options[3];
+        questionTitle.textContent = questionsArr[q].title;
+        console.log("next question please !")
     }
-
+    else {
+        saveScore();
+        endScreen();
+    }
 }
 
 function questionWrong() {
@@ -109,8 +114,13 @@ function questionOK() {
 
 function endScreen() {
     // hide questions and start page - show score and say GAME OVER or summat
+    //showHideQuestions(false); // hide questions - may not be required if changing to highscores.html
+    // show the endScreen
+    endScreenEl.setAttribute("class", "show");
+    questions.setAttribute("class", "hide");
+    finalScoreEl.textContent = timerCount;
+    clearInterval(timer);
     // then load high score entry
-    showHideQuestions(false); // hide questions - may not be required if changing to highscores.html
     // show score and Game over
     displayScores();
 }

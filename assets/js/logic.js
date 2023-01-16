@@ -6,6 +6,10 @@ var questionTitle = document.querySelector("#question-title");
 var options = document.querySelector(".choices");
 var timerElement = document.querySelector(".timer");
 var feedback = document.querySelector(".feedback");
+var endScreenEl = document.querySelector("#end-screen");
+var finalScoreEl = document.querySelector("#final-score");
+var submitButton = document.querySelector("#submit");
+var intialsEl = document.querySelector("#initials");
 // global variables
 var timer;
 var timerCount;
@@ -22,7 +26,7 @@ startButton.addEventListener("click", function (event) {
 // Create startGame() function to kick off the game
 function startGame() {
   // set a new counter value 
-  timerCount = 10;
+  timerCount = 75;
   //update timer on screen
   timerElement.textContent = timerCount;
   startCounter();
@@ -35,14 +39,6 @@ function startGame() {
 function checkTimer() {
   console.log(timerElement.textContent);
   timerElement.textContent = timerCount;
-
-}
-
-function endScreen() {
-  // allow high score entry
-  //save high score with initials
-  console.log("end screen");
-  return;
 
 }
 
