@@ -13,6 +13,7 @@ function checkScores() {
 function saveScore() {
     // save scores to local storage
     // localStorage.setItem("name", score);
+    // get name from user input
 }
 
 function getScores() {
@@ -21,14 +22,15 @@ function getScores() {
     // score = localStorage.getItem("name", score);
 }
 
+function evalScore() {
+    getScores();
+    displayScores();
+    return;
+}
+
 function displayScores() {
     // display the leaderboard on the highscores page
     scoresEl.appendChild(li, score);
     return;
 }
 
-function evalScore() {
-    getScores();
-    displayScores();
-    return;
-}

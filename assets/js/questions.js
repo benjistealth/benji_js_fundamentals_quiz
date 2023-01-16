@@ -58,23 +58,32 @@ options.addEventListener("click", function (event) {
     // var thing = event.target.innerText; 
     // thing = thing.splice(0,2);
     console.log(event.target.innerText);
+    console.log(questionsArr[q].answer);
     if (event.target.innerText === questionsArr[q].answer) {
         questionOK();
         q++;
+        showHideQuestions(true);
     }
-    else questionWrong();
+    else if(event.target.innerText != questionsArr[q].answer)
+         questionWrong();
+         showHideQuestions(true);
 
 });
 
-// pass array of question options to display as buttons
-function makeButtons(list) {
+// pass array from showHideQuestions to display as buttons
+function makeButtons(arr) {
     var questionItem = document.createElement("ol");
     for (let i = 0; i < list.length; i++) {
         var button = document.createElement('button');
-        button.innerText = list[i]; // (i + 1) +  + ". "
+        button.innerText = arr[i]; // (i + 1) +  + ". "
         questionItem.appendChild(button);
         options.appendChild(questionItem);
     }
+}
+
+function replaceButtons() {
+
+
 }
 
 function questionWrong() {
@@ -94,7 +103,7 @@ function questionOK() {
 function endScreen() {
     // hide questions and start page - show score and say GAME OVER or summat
     // then load high score entry
-    showHideQuestions(false); // hide questions
+    showHideQuestions(false); // hide questions - may not be required if changing to highscores.html
     // show score and Game over
     displayScores();
 }
