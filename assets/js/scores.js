@@ -6,10 +6,11 @@ var recalledInitials;
 
     // event listener for submit button so save the data
     submitButton.addEventListener("click", function (event) { 
+        event.preventDefault();
         var saveInitials = intialsEl.value;
-        console.log("intitials " + saveInitials);
+        console.log("intitials " + saveInitials); // debug
         var saveScore = timerCount;
-        console.log("score " + saveScore);
+        console.log("score " + saveScore); // debug
         var finalScore = {
             initials: saveInitials,
             score: saveScore,
@@ -23,8 +24,8 @@ function getScores() {
     // recall scores from local storage
     //var storedTodos = JSON.parse(localStorage.getItem("todos"));
     recalledInitials = localStorage.getItem("initials");
-    recalledScore = localStorage.getItem("");
-    console.log("recalled " + recalledScores);
+    recalledScore = localStorage.getItem("score");
+    console.log("recalled " + recalledInitials + " " + recalledScore);
     return;
 }
 
@@ -37,10 +38,10 @@ function displayScores() {
     //  get the latest saved scores to display on highscores page
     getScores();
     // transition to highscores page
-    document.querySelector(".scores").click();
+    //document.querySelector(".scores").click();
+    window.location.href = "./assets/html/highscores.html";
     // create elements to put scores into
 
     // var highScoreDisplay = ("ol");
     // scoresEl.appendChild(highScoreDisplay);
-    return;
 }
