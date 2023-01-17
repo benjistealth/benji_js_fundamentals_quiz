@@ -1,7 +1,7 @@
 
 var submitButton = document.querySelector("#submit");
 var intialsEl = document.querySelector("#initials");
-var highscoresList = document.querySelector("#highscores");
+var highscoresList = document.querySelector("#highscorer");
 var clearScores = document.querySelector("#clear");
 var recalledScores;
 var recalledInitials;
@@ -33,9 +33,8 @@ function getScores() {
     //var storedTodos = JSON.parse(localStorage.getItem("todos")); // not working
     recalledInitials = localStorage.getItem("initials");
     recalledScores = localStorage.getItem("score");
-    recalledArr.push(recalledInitials + " " + recalledScores);
-    console.log("recalled " + recalledInitials + " " + recalledScores);
-    return recalledArr;
+    // console.log("recalled " + recalledInitials + " " + recalledScores);
+    // return recalledArr;
 }
 
 function changePage() {
@@ -43,12 +42,13 @@ function changePage() {
     window.location.href = "./assets/html/highscores.html";
     return;
 }
-
+// displaying the scores does not seem to work and I cannot see why
+//  get the latest saved scores & display on highscores page
 function displayScores() {
-    //  get the latest saved scores to display on highscores page
     getScores();
-    console.log(recalledArr);
-    // create elements to put scores into
+    // attempt to populate new element created - not working
+    highscoresList.textContent = (recalledInitials + " " + recalledScores);
+    //create elements to put scores into - not working
     for (let i = 0; i < recalledArr.length; i++) {
         let item = recalledArr[i];
         let listItem = document.createElement("li");
