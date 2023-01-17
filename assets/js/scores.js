@@ -1,15 +1,11 @@
 var scoresEl = document.querySelector("highscores");
+var submitButton = document.querySelector("#submit");
+var intialsEl = document.querySelector("#initials");
 var recalledScores;
+var recalledInitials;
 
-// function saveScores() {
-    // assuming the score is the time left, bigger score  === better
-    // get the time remaining to save as score - timerCount
-    // save scores to local storage
-    // get name from user input
-    
     // event listener for submit button so save the data
-    submitButton.addEventListener("click", function (event) { // Broken 
-
+    submitButton.addEventListener("click", function (event) { 
         var saveInitials = intialsEl.value;
         console.log("intitials " + saveInitials);
         var saveScore = timerCount;
@@ -17,17 +13,17 @@ var recalledScores;
         var finalScore = {
             initials: saveInitials,
             score: saveScore,
-        }
-        localStorage.setItem("highScore", JSON.stringify(finalScore));
+        };
+        localStorage.setItem("initials", saveInitials);
+        localStorage.setItem("score", saveScore);
         displayScores();
     });
-// }
-
 
 function getScores() {
     // recall scores from local storage
     //var storedTodos = JSON.parse(localStorage.getItem("todos"));
-    recalledScores = JSON.parse(localStorage.getItem("higihscore"));
+    recalledInitials = localStorage.getItem("initials");
+    recalledScore = localStorage.getItem("");
     console.log("recalled " + recalledScores);
     return;
 }

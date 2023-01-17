@@ -8,8 +8,7 @@ var timerElement = document.querySelector(".timer");
 var feedback = document.querySelector(".feedback");
 var endScreenEl = document.querySelector("#end-screen");
 var finalScoreEl = document.querySelector("#final-score");
-var submitButton = document.querySelector("#submit");
-var intialsEl = document.querySelector("#initials");
+
 // global variables
 var timer;
 var timerCount;

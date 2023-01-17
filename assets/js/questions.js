@@ -27,7 +27,7 @@ var question4 = {
     answer: "3. Quotation Marks",
 };
 
-var q = 0;
+var questionCounter = 0;
 
 
 
@@ -40,9 +40,9 @@ function showHideQuestions(hide) {
         startScreen.setAttribute("class", "hide");
         questions.setAttribute("class", "choices");
         //prints 1st question        
-        questionTitle.textContent = questionsArr[q].title;
+        questionTitle.textContent = questionsArr[questionCounter].title;
         // prints the 4 options as buttons for q1
-        makeButtons(questionsArr[q].options);
+        makeButtons(questionsArr[questionCounter].options);
     }
     else {
         questions.setAttribute("class", "hide");
@@ -51,11 +51,11 @@ function showHideQuestions(hide) {
 }
 // listener for answer button click event
 options.addEventListener("click", function (event) {
-    if (event.target.innerText === questionsArr[q].answer) {
+    if (event.target.innerText === questionsArr[questionCounter].answer) {
         questionOK();
         nextQuestion();
     }
-    else if (event.target.innerText != questionsArr[q].answer) {
+    else if (event.target.innerText != questionsArr[questionCounter].answer) {
         questionWrong();
         nextQuestion();
     }
@@ -76,18 +76,19 @@ function makeButtons(arr) {
 }
 
 // amends the button text and question text after a selection is made
+// exit to end screen when questions run out
 function nextQuestion() {
-    if (q < 3) {
-        q++;
+    if (questionCounter < (questionsArr.length -1)) {
+        questionCounter++;
         var buttonQ0 = document.querySelector("#button_0");
         var buttonQ1 = document.querySelector("#button_1");
         var buttonQ2 = document.querySelector("#button_2");
         var buttonQ3 = document.querySelector("#button_3");
-        buttonQ0.innerText = questionsArr[q].options[0];
-        buttonQ1.innerText = questionsArr[q].options[1];
-        buttonQ2.innerText = questionsArr[q].options[2];
-        buttonQ3.innerText = questionsArr[q].options[3];
-        questionTitle.textContent = questionsArr[q].title;
+        buttonQ0.innerText = questionsArr[questionCounter].options[0];
+        buttonQ1.innerText = questionsArr[questionCounter].options[1];
+        buttonQ2.innerText = questionsArr[questionCounter].options[2];
+        buttonQ3.innerText = questionsArr[questionCounter].options[3];
+        questionTitle.textContent = questionsArr[questionCounter].title;
     }
     else {
         // saveScores();
