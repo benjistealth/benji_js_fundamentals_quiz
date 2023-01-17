@@ -1,8 +1,5 @@
-// This file is just to store the questions for the quiz
-// Create questions and 4 answers to each with only one being correct
-// Store each question as an object with all the info for each question
-// Create an array
-;
+
+// question objects to store in array
 var question1 = {
     title: "Commonly used data types DO NOT include: ",
     options: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"],
@@ -26,23 +23,22 @@ var question4 = {
     options: ["1. Commas", "2. Curley Brackets", "3. Quotation Marks", "4. Parenthesis"],
     answer: "3. Quotation Marks",
 };
+// keep track of which question is displayed
+var questionCounter = 0;
 
-var q = 0;
-
-
-
+// array of question objects
 var questionsArr = [question1, question2, question3, question4];
 
+// hide start page element - show questions
 function showHideQuestions(hide) {
-    // hide start page element - show questions
     if (hide) {
         //hide start screen first, then show questions
         startScreen.setAttribute("class", "hide");
         questions.setAttribute("class", "choices");
         //prints 1st question        
-        questionTitle.textContent = questionsArr[q].title;
+        questionTitle.textContent = questionsArr[questionCounter].title;
         // prints the 4 options as buttons for q1
-        makeButtons(questionsArr[q].options);
+        makeButtons(questionsArr[questionCounter].options);
     }
     else {
         questions.setAttribute("class", "hide");
@@ -51,13 +47,11 @@ function showHideQuestions(hide) {
 }
 // listener for answer button click event
 options.addEventListener("click", function (event) {
-    console.log(event.target.innerText);
-    console.log(questionsArr[q].answer);
-    if (event.target.innerText === questionsArr[q].answer) {
+    if (event.target.innerText === questionsArr[questionCounter].answer) {
         questionOK();
         nextQuestion();
     }
-    else if (event.target.innerText != questionsArr[q].answer) {
+    else if (event.target.innerText != questionsArr[questionCounter].answer) {
         questionWrong();
         nextQuestion();
     }
@@ -78,28 +72,27 @@ function makeButtons(arr) {
 }
 
 // amends the button text and question text after a selection is made
+// exit to end screen when questions run out
 function nextQuestion() {
-    if (q < 3) {
-        q++;
+    if (questionCounter < (questionsArr.length - 1)) {
+        questionCounter++;
         var buttonQ0 = document.querySelector("#button_0");
         var buttonQ1 = document.querySelector("#button_1");
         var buttonQ2 = document.querySelector("#button_2");
         var buttonQ3 = document.querySelector("#button_3");
-        buttonQ0.innerText = questionsArr[q].options[0];
-        buttonQ1.innerText = questionsArr[q].options[1];
-        buttonQ2.innerText = questionsArr[q].options[2];
-        buttonQ3.innerText = questionsArr[q].options[3];
-        questionTitle.textContent = questionsArr[q].title;
-        console.log("next question please !")
+        buttonQ0.innerText = questionsArr[questionCounter].options[0];
+        buttonQ1.innerText = questionsArr[questionCounter].options[1];
+        buttonQ2.innerText = questionsArr[questionCounter].options[2];
+        buttonQ3.innerText = questionsArr[questionCounter].options[3];
+        questionTitle.textContent = questionsArr[questionCounter].title;
     }
     else {
-        saveScore();
         endScreen();
     }
 }
 
 function questionWrong() {
-    // display feedback to user and load next question
+    // display feedback to user and subtract time
     // also reduce timer by 10 seconds
     feedback.textContent = "Wrong!";
     timerCount -= 10;
@@ -107,20 +100,17 @@ function questionWrong() {
 }
 
 function questionOK() {
-    // display feedback to user and load next question
+    // display feedback to user and return
     feedback.textContent = "Correct!";
     return;
 }
 
 function endScreen() {
-    // hide questions and start page - show score and say GAME OVER or summat
-    //showHideQuestions(false); // hide questions - may not be required if changing to highscores.html
+    // hide questions
     // show the endScreen
-    endScreenEl.setAttribute("class", "show");
     questions.setAttribute("class", "hide");
-    finalScoreEl.textContent = timerCount;
+    endScreenEl.setAttribute("class", "show");
     clearInterval(timer);
-    // then load high score entry
-    // show score and Game over
-    displayScores();
+    // display the final score on end screen
+    finalScoreEl.textContent = timerCount;
 }
