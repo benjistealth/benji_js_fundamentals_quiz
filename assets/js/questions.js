@@ -90,7 +90,7 @@ function nextQuestion() {
         questionTitle.textContent = questionsArr[q].title;
     }
     else {
-        saveScores();
+        // saveScores();
         endScreen();
     }
 }
@@ -117,7 +117,9 @@ function endScreen() {
     endScreenEl.setAttribute("class", "show");    
     // finalScoreEl.textContent = timerCount;
     clearInterval(timer);
+    // display the final score on end screen
+    finalScoreEl.textContent = timerCount;
     // then load high score entry
     // show score and Game over
-    displayScores();
+    // displayScores();
 }
