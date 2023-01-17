@@ -33,8 +33,6 @@ function getScores() {
     //var storedTodos = JSON.parse(localStorage.getItem("todos")); // not working
     recalledInitials = localStorage.getItem("initials");
     recalledScores = localStorage.getItem("score");
-    // console.log("recalled " + recalledInitials + " " + recalledScores);
-    // return recalledArr;
 }
 
 function changePage() {
