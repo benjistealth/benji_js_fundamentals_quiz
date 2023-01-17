@@ -4,25 +4,28 @@ var intialsEl = document.querySelector("#initials");
 var recalledScores;
 var recalledInitials;
 
-    // event listener for submit button so save the data
-    submitButton.addEventListener("click", function (event) { 
-        event.preventDefault();
-        var saveInitials = intialsEl.value;
-        console.log("intitials " + saveInitials); // debug
-        var saveScore = timerCount;
-        console.log("score " + saveScore); // debug
-        var finalScore = {
-            initials: saveInitials,
-            score: saveScore,
-        };
-        localStorage.setItem("initials", saveInitials);
-        localStorage.setItem("score", saveScore);
-        displayScores();
-    });
+
+// event listener for submit button so save the data
+// add if statement to avoid error when changing page to highscores.html
+if (submitButton){
+submitButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    var saveInitials = intialsEl.value;
+    console.log("intitials " + saveInitials); // debug
+    var saveScore = timerCount;
+    console.log("score " + saveScore); // debug
+    var finalScore = {
+        initials: saveInitials,
+        score: saveScore,
+    };
+    localStorage.setItem("initials", saveInitials);
+    localStorage.setItem("score", saveScore);
+    displayScores();
+});}
 
 function getScores() {
     // recall scores from local storage
-    //var storedTodos = JSON.parse(localStorage.getItem("todos"));
+    //var storedTodos = JSON.parse(localStorage.getItem("todos")); // not working
     recalledInitials = localStorage.getItem("initials");
     recalledScore = localStorage.getItem("score");
     console.log("recalled " + recalledInitials + " " + recalledScore);
