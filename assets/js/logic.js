@@ -29,10 +29,6 @@ function startGame() {
   //update timer on screen
   timerElement.textContent = timerCount;
   startCounter();
-  // while (timerCount != 0) {
-  //   showHideQuestions(true);
-  //   console.log("show hide");
-  //}
 }
 
 function startCounter() {
@@ -40,9 +36,6 @@ function startCounter() {
   timer = setInterval(function () {
     timerCount--; // reduce timer & upate screen
     timerElement.textContent = timerCount;
-    if (timerCount >= 0) {
-      // showHideQuestions(true);
-    }
     // Check if timer is expired
     if (timerCount <= 0) {
       // Clears interval
@@ -54,24 +47,3 @@ function startCounter() {
   }, 1000);
 return timerCount;
 }
-
-// display question 1 and wait for user response
-
-// calc user score
-
-// store user score in local storage
-
-// reduce timer if incorrect answer & check for end time
-
-// make a questions container - to hide and show - toggle class attribute hide
-
-// make a start game container to swap out with above
-
-// use clear interval to reset timer
-
-// transition to scores when game over
-
-// create scores.js to handle saving and recalling saved data and displaying scores
-
-// quizEnd() function to trigger high scores display thingy
-

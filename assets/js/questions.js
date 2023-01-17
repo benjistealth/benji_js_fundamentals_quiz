@@ -1,8 +1,5 @@
-// This file is just to store the questions for the quiz
-// Create questions and 4 answers to each with only one being correct
-// Store each question as an object with all the info for each question
-// Create an array
-;
+
+// question objects to store in array
 var question1 = {
     title: "Commonly used data types DO NOT include: ",
     options: ["1. Strings", "2. Booleans", "3. Alerts", "4. Numbers"],
@@ -26,15 +23,14 @@ var question4 = {
     options: ["1. Commas", "2. Curley Brackets", "3. Quotation Marks", "4. Parenthesis"],
     answer: "3. Quotation Marks",
 };
-
+// keep track of which question is displayed
 var questionCounter = 0;
 
-
-
+// array of question objects
 var questionsArr = [question1, question2, question3, question4];
 
+// hide start page element - show questions
 function showHideQuestions(hide) {
-    // hide start page element - show questions
     if (hide) {
         //hide start screen first, then show questions
         startScreen.setAttribute("class", "hide");
@@ -78,7 +74,7 @@ function makeButtons(arr) {
 // amends the button text and question text after a selection is made
 // exit to end screen when questions run out
 function nextQuestion() {
-    if (questionCounter < (questionsArr.length -1)) {
+    if (questionCounter < (questionsArr.length - 1)) {
         questionCounter++;
         var buttonQ0 = document.querySelector("#button_0");
         var buttonQ1 = document.querySelector("#button_1");
@@ -91,13 +87,12 @@ function nextQuestion() {
         questionTitle.textContent = questionsArr[questionCounter].title;
     }
     else {
-        // saveScores();
         endScreen();
     }
 }
 
 function questionWrong() {
-    // display feedback to user and load next question
+    // display feedback to user and subtract time
     // also reduce timer by 10 seconds
     feedback.textContent = "Wrong!";
     timerCount -= 10;
@@ -105,22 +100,17 @@ function questionWrong() {
 }
 
 function questionOK() {
-    // display feedback to user and load next question
+    // display feedback to user and return
     feedback.textContent = "Correct!";
     return;
 }
 
 function endScreen() {
-    // hide questions and start page - show score and say GAME OVER or summat
-    //showHideQuestions(false); // hide questions - may not be required if changing to highscores.html
+    // hide questions
     // show the endScreen
     questions.setAttribute("class", "hide");
-    endScreenEl.setAttribute("class", "show");    
-    // finalScoreEl.textContent = timerCount;
+    endScreenEl.setAttribute("class", "show");
     clearInterval(timer);
     // display the final score on end screen
     finalScoreEl.textContent = timerCount;
-    // then load high score entry
-    // show score and Game over
-    // displayScores();
 }
