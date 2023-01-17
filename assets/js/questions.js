@@ -47,6 +47,7 @@ function showHideQuestions(hide) {
 }
 // listener for answer button click event
 options.addEventListener("click", function (event) {
+    event.preventDefault();
     if (event.target.innerText === questionsArr[questionCounter].answer) {
         questionOK();
         nextQuestion();
