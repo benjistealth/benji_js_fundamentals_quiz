@@ -41,8 +41,6 @@ function startCounter() {
       // Clears interval
       clearInterval(timer);
       timerElement.textContent = timerCount;
-      // showHideQuestions(false);
-      // endScreen();
     } //wait 1s
   }, 1000);
 return timerCount;
