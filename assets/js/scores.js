@@ -14,9 +14,7 @@ if (submitButton) {
     submitButton.addEventListener("click", function (event) {
         event.preventDefault();
         var saveInitials = intialsEl.value;
-        console.log("intitials " + saveInitials); // debug
         var saveScore = timerCount;
-        console.log("score " + saveScore); // debug
         var finalScore = {
             initials: saveInitials,
             score: saveScore,
