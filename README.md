@@ -13,16 +13,22 @@ A webpage that provides a JavaScript fundamentals timed quiz with high score rec
 
   <img alt="Screenshot_1" src="assets\images\screenshot1.png">
 
-  ## Screenshot of question page with timer
+  ## Screenshot of question page with timer - wrong answer
 
     
   <img alt="Screenshot_1" src="assets\images\screenshot2.png">
 
-  ## Screenshot of high scores page after the game is over
 
-    
+  ## Screenshot of question page with timer - correct answer
+
+
   <img alt="Screenshot_1" src="assets\images\screenshot3.png">
 
+
+  ## Screenshot of end screen initials entry and final score
+
+
+  <img alt="Screenshot_1" src="assets\images\screenshot4.png">
 
 ## Installation
 
