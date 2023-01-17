@@ -1,4 +1,4 @@
-var scoresEl = document.querySelector("highscores");
+
 var submitButton = document.querySelector("#submit");
 var intialsEl = document.querySelector("#initials");
 var highscoresList = document.querySelector("#highscores");
@@ -35,7 +35,7 @@ function getScores() {
     recalledScores = localStorage.getItem("score");
     recalledArr.push(recalledInitials + " " + recalledScores);
     console.log("recalled " + recalledInitials + " " + recalledScores);
-    return;
+    return recalledArr;
 }
 
 function changePage() {
@@ -47,18 +47,19 @@ function changePage() {
 function displayScores() {
     //  get the latest saved scores to display on highscores page
     getScores();
+    console.log(recalledArr);
     // create elements to put scores into
-    let scorelist = document.getElementById("ol");
     for (let i = 0; i < recalledArr.length; i++) {
         let item = recalledArr[i];
         let listItem = document.createElement("li");
         listItem.textContent = item;
-        scorelist.appendChild(listItem);
+        highscoresList.appendChild(listItem);
     }
 }
-    // add listener for clear scores button
+// add listener for clear scores button
+if (clearScores) {
     clearScores.addEventListener("click", function (event) {
         event.preventDefault();
         localStorage.clear();
     });
-
+}
