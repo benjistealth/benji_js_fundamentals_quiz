@@ -22,18 +22,16 @@ if (submitButton) {
         localStorage.setItem("initials", saveInitials);
         localStorage.setItem("score", saveScore);
         changePage();
-        
-        // getScores();
     });
 }
 displayScores();
 
 function getScores() {
     // recall scores from local storage
-    //var storedTodos = JSON.parse(localStorage.getItem("todos")); // not working
+    //var recalledString = JSON.parse(localStorage.getItem("finalscore")); // not working
     recalledInitials = localStorage.getItem("initials");
     recalledScores = localStorage.getItem("score");
-    recalledArr = [recalledInitials, + "  " + recalledScores];
+    recalledArr[0] = [recalledInitials + " - " + recalledScores];
 }
 
 function changePage() {
@@ -48,7 +46,6 @@ function changePage() {
 function displayScores() {
     var highscoresList = document.querySelector("#highscorer");
     getScores();
-    // recalledArr = ["BCS", "  ", "69"];
     for (let i = 0; i < recalledArr.length; i++) {
         let item = recalledArr[i];
         let listItem = document.createElement("li");
