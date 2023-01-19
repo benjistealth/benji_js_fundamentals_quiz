@@ -1,7 +1,7 @@
 
 var submitButton = document.querySelector("#submit");
 var intialsEl = document.querySelector("#initials");
-
+var highscoresList = document.querySelector("#highscores");
 var clearScores = document.querySelector("#clear");
 var recalledScores;
 var recalledInitials;
@@ -24,7 +24,11 @@ if (submitButton) {
         changePage();
     });
 }
-displayScores();
+
+function changePage() {
+    // transition to highscores page
+    window.location.href = "./assets/html/highscores.html";
+}
 
 function getScores() {
     // recall scores from local storage
@@ -34,17 +38,13 @@ function getScores() {
     recalledArr[0] = [recalledInitials + " - " + recalledScores];
 }
 
-function changePage() {
-    // transition to highscores page
-    window.location.href = "./assets/html/highscores.html";
-}
+displayScores()
 // displaying the scores does not seem to work and I cannot see why
 //  get the latest saved scores & display on highscores pagerecalledScores
-    // attempt to populate new element created - not working
-    // highscoresList.textContent = (recalledInitials + " " + recalledScores);
-    //create elements to put scores into - not working
+    // attempt to populate new element created
+
 function displayScores() {
-    var highscoresList = document.querySelector("#highscorer");
+    if (highscoresList){    
     getScores();
     for (let i = 0; i < recalledArr.length; i++) {
         let item = recalledArr[i];
@@ -53,11 +53,14 @@ function displayScores() {
         highscoresList.appendChild(listItem);
     }
  }
+}
 
 // add listener for clear scores button
 if (clearScores) {
     clearScores.addEventListener("click", function (event) {
         event.preventDefault();
         localStorage.clear();
+        var listElement = document.getElementById('highscores');
+        listElement.parentNode.removeChild(listElement);
     });
 }
