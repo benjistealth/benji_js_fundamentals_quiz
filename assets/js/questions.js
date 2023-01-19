@@ -74,6 +74,7 @@ function makeButtons(arr) {
 
 // amends the button text and question text after a selection is made
 // exit to end screen when questions run out
+// refactor to use foreach
 function nextQuestion() {
     if (questionCounter < (questionsArr.length - 1)) {
         questionCounter++;
