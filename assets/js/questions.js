@@ -97,8 +97,11 @@ function questionWrong() {
     // display feedback to user and subtract time
     // also reduce timer by 10 seconds
     feedback.textContent = "Wrong!";
-    timerCount -= 10;
-    return;
+    if (timerCount > 10) {
+        timerCount -= 10;
+        return;
+    }
+    else timerCount = 0;
 }
 
 function questionOK() {
