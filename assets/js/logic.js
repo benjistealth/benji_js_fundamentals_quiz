@@ -9,6 +9,7 @@ var feedback = document.querySelector(".feedback");
 var endScreenEl = document.querySelector("#end-screen");
 var finalScoreEl = document.querySelector("#final-score");
 
+
 // global variables
 var timer;
 var timerCount;

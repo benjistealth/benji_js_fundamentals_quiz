@@ -3,34 +3,41 @@ var submitButton = document.querySelector("#submit");
 var intialsEl = document.querySelector("#initials");
 var highscoresList = document.querySelector("#highscores");
 var clearScores = document.querySelector("#clear");
-var recalledObj = JSON.parse(localStorage.getItem("finalScore"));
+var recalledArr = JSON.parse(localStorage.getItem("finalScore"));
 var saveArr = [];
 var recalledScores;
 var recalledInitials;
-var recalledArr = [];
-// var recalledObj;
-
+var displayArr = [];
 
 // event listener for submit button so save the data
 // add if statement to avoid error when submit button not on page
 if (submitButton) {
     submitButton.addEventListener("click", function (event) {
         event.preventDefault();
-        var saveInitials = intialsEl.value;
-        var saveScore = timerCount;
-        var finalScore = {
-            initials: saveInitials,
-            score: saveScore,
-        };
-        // add each score to the array before saving
-        saveArr.push(finalScore);
-        alert(saveArr.length);
-        localStorage.setItem("finalScore", JSON.stringify(saveArr));
-        // save in string format below
-        // localStorage.setItem("initials", saveInitials);
-        // localStorage.setItem("score", saveScore);
+        getScores();
+        saveScore();
         changePage();
     });
+}
+
+function saveScore() {
+// grab initials and score
+    var saveInitials = intialsEl.value;
+    var saveScore = timerCount;
+// create object with data
+    var finalScore = {
+        initials: saveInitials,
+        score: saveScore,
+    };
+    // add each score to the array before saving
+        recalledArr = JSON.parse(localStorage.getItem("finalScore"));
+    if (recalledArr) {
+        recalledArr.push(finalScore);
+    }
+    else {
+        recalledArr = [finalScore];
+    }
+    localStorage.setItem("finalScore", JSON.stringify(recalledArr));
 }
 
 function changePage() {
@@ -40,19 +47,19 @@ function changePage() {
 
 function getScores() {
     // recall scores from local storage
-    // recalledObj = JSON.parse(localStorage.getItem("finalScore"));
-    if (recalledObj !== null) {
-        for (let i = 0; i < recalledObj.length; i++) {
-            recalledInitials = recalledObj[i].initials;
-            recalledScores = recalledObj[i].score;
-            // recall string formats below
-            // recalledInitials = localStorage.getItem("initials");
-            // recalledScores = localStorage.getItem("score");
+    recalledArr = JSON.parse(localStorage.getItem("finalScore"));
+    if (recalledArr !== null) {
+        // sort by score value
+        recalledArr.sort(function(a, b) {
+            return b.score - a.score;
+        });
+        for (let i = 0; i < recalledArr.length; i++) {
+            recalledInitials = recalledArr[i].initials;
+            recalledScores = recalledArr[i].score;
             console.log(recalledInitials + " - " + recalledScores);
-            recalledArr.push(recalledInitials + " - " + recalledScores);
+            displayArr.push(recalledInitials + " - " + recalledScores);
         }
     }
-    // return;
 }
 
 displayScores()
@@ -61,8 +68,8 @@ displayScores()
 function displayScores() {
     if (highscoresList) {
         getScores();
-        for (let i = 0; i < recalledArr.length; i++) {
-            let item = recalledArr[i];
+        for (let i = 0; i < displayArr.length; i++) {
+            let item = displayArr[i];
             console.log(item);
             let listItem = document.createElement("li");
             listItem.textContent = item;
