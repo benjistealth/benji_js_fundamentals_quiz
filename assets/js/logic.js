@@ -25,7 +25,7 @@ startButton.addEventListener("click", function (event) {
 // Create startGame() function to kick off the game
 function startGame() {
   // set a new counter value 
-  timerCount = 75;
+  timerCount = 20;
   //update timer on screen
   timerElement.textContent = timerCount;
   startCounter();
@@ -40,7 +40,9 @@ function startCounter() {
     if (timerCount <= 0) {
       // Clears interval
       clearInterval(timer);
-      timerElement.textContent = timerCount;
+      timerElement.textContent = 0;
+      timerCount = 0;
+      endScreen();
     } //wait 1s
   }, 1000);
 return timerCount;
