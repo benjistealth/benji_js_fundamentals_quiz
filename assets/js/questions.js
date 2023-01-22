@@ -74,7 +74,7 @@ function makeButtons(arr) {
 
 // amends the button text and question text after a selection is made
 // exit to end screen when questions run out
-// refactor to use foreach
+// refactor to use foreach to make this neater
 function nextQuestion() {
     if (questionCounter < (questionsArr.length - 1)) {
         questionCounter++;
@@ -95,7 +95,7 @@ function nextQuestion() {
 
 function questionWrong() {
     // display feedback to user and subtract time
-    // also reduce timer by 10 seconds
+    // also reduce timer by 10 seconds if they have enough left
     feedback.textContent = "Wrong!";
     if (timerCount > 10) {
         timerCount -= 10;

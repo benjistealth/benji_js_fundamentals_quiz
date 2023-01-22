@@ -25,9 +25,8 @@ if (submitButton) {
         // add each score to the array before saving
         saveArr.push(finalScore);
         alert(saveArr.length);
-        // finalScore.initials.push(saveInitials);
-        // finalScore.score.push(saveScore);
         localStorage.setItem("finalScore", JSON.stringify(saveArr));
+        // save in string format below
         // localStorage.setItem("initials", saveInitials);
         // localStorage.setItem("score", saveScore);
         changePage();
@@ -46,6 +45,7 @@ function getScores() {
         for (let i = 0; i < recalledObj.length; i++) {
             recalledInitials = recalledObj[i].initials;
             recalledScores = recalledObj[i].score;
+            // recall string formats below
             // recalledInitials = localStorage.getItem("initials");
             // recalledScores = localStorage.getItem("score");
             console.log(recalledInitials + " - " + recalledScores);
@@ -58,7 +58,6 @@ function getScores() {
 displayScores()
 //  get the latest saved scores & display on highscores page
 // create new elements for each score recalled from storage
-
 function displayScores() {
     if (highscoresList) {
         getScores();
@@ -75,12 +74,14 @@ function displayScores() {
 
 // add listener for clear scores button
 if (window.location.href.endsWith("/highscores.html")) {
-
     clearScores.addEventListener("click", function (event) {
         let listItem = document.querySelector("li");
         event.preventDefault();
+        // check there are items to remove
         if (listItem) {
+            // clear the stored data
             localStorage.clear();
+            // remove the highscores list from the page
             var listElement = document.getElementById('highscores');
             listElement.parentNode.removeChild(listElement);
         }
