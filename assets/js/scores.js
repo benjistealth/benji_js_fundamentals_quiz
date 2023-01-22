@@ -56,7 +56,6 @@ function getScores() {
         for (let i = 0; i < recalledArr.length; i++) {
             recalledInitials = recalledArr[i].initials;
             recalledScores = recalledArr[i].score;
-            console.log(recalledInitials + " - " + recalledScores);
             displayArr.push(recalledInitials + " - " + recalledScores);
         }
     }
@@ -70,7 +69,6 @@ function displayScores() {
         getScores();
         for (let i = 0; i < displayArr.length; i++) {
             let item = displayArr[i];
-            console.log(item);
             let listItem = document.createElement("li");
             listItem.textContent = item;
             highscoresList.appendChild(listItem);
